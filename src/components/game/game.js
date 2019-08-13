@@ -1,5 +1,6 @@
 import Phaser from "phaser";
-import StageList from "../stage-list/stage-list";
+// import StageList from "../stage-list/stage-list";
+import LoadScene from '../../scenes/load-scene/load-scene';
 
 export default class Game {
     constructor() {
@@ -8,27 +9,33 @@ export default class Game {
             parent: "phaser-example",
             width: 800,
             height: 600,
-            scene: {}
+            scene: [LoadScene],
+            render: {
+                pixelArt: true
+            },
+            physics: {
+                default: 'arcade',
+                arcade: {
+                    debug: true
+                }
+            }
         };
 
         this.game = null;
 
-        this.initStages = this.initStages.bind(this);
         this.init = this.init.bind(this);
         this.init();
     }
 
-    initStages() {
-        this.stageList = new StageList(this.config.scene);
-
-        Object.keys(this.stageList.stages).forEach((stage) => {
-            this.config.scene[stage] = this.stageList.stages[stage].init;
-        });
+    init() {
+        this.game = new Phaser.Game(this.config);
     }
 
-    init() {
-        this.initStages();
+    pause() {
+        this.game.scene.pause();
+    }
 
-        this.game = new Phaser.Game(this.config);
+    resume() {
+        this.game.scene.resume();
     }
 }

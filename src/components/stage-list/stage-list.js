@@ -1,24 +1,21 @@
-import PreloadStage from '../../pages/preload/preload';
-import CreateStage from "../../pages/create/create";
+import LoadScene from '../../scenes/load-scene/load-scene';
+import MenuScene from '../../scenes/menu-scene/menu-scene';
+import MainCity from '../../scenes/main-city/main-city';
 
 export default class StageList {
     constructor(gameRoot) {
         this.gameRoot = gameRoot;
         this.stages = {};
 
-        this.initStages = this.initStages.bind(this);
         this.init = this.init.bind(this);
         this.init();
     }
 
     init() {
-        this.stages.preload = new PreloadStage(this.gameRoot);
-        this.stages.create = new CreateStage(this.gameRoot);
-    }
-
-    initStages() {
-        /*Object.keys(this.stages).forEach(stage => {
-            this.stages[stage].init();
-        });*/
+        // эта хуйня не работает. Не добавляй сюда нихуя. Потом поправишь
+        this.stages.LOAD= LoadScene;
+        this.stages.MENU = MenuScene;
+        this.stages.MENU = MenuScene;
+        this.stages.MAIN_CITY = MenuScene;
     }
 }

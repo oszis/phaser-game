@@ -4,8 +4,8 @@ export default class Character extends Phaser.GameObjects.Sprite {
         this.keys = {};
         this.velocity = 200;
 
-        this.sprite = this.scene.physics.add.sprite﻿﻿(0, 0, 'char');﻿
-        this.sprite.setCollideWorldBounds(true);
+        this.sprite = this.scene.physics.add.sprite(150, 150, 'char');﻿
+        this.sprite.body.setCollideWorldBounds(true);
 
         this.keys.w = this.scene.input.keyboard.addKey('W');
         this.keys.s = this.scene.input.keyboard.addKey('S');
@@ -29,25 +29,27 @@ export default class Character extends Phaser.GameObjects.Sprite {
         });
 
         // охуеть, тут большая часть функций есть из коробки. Но их нужно искать, что заебывает
-        this.scene.cameras.main.startFollow(this.sprite, false, 0.1, 0.1);
+        this.scene.cameras.main.startFollow(this.sprite, false, 0.09, 0.09);
     }
 
     update() {
-
+        this.sprite.body.setVelocity(0);
         if (this.keys.w.isDown) {
-            this.sprite.setVelocityY(-this.velocity);
+            this.sprite.body.setVelocityY(-this.velocity);
         }
 
         if (this.keys.s.isDown) {
-            this.sprite.setVelocityY(this.velocity);
+            this.sprite.body.setVelocityY(this.velocity);
         }
 
         if (this.keys.a.isDown) {
-            this.sprite.setVelocityX(-this.velocity);
+            this.sprite.body.setVelocityX(-this.velocity);
         }
 
         if (this.keys.d.isDown) {
-            this.sprite.setVelocityX(this.velocity);
+            this.sprite.body.setVelocityX(this.velocity);
         }
+
+        this.sprite.body.velocity.normalize().scale(this.velocity);
     }
 }

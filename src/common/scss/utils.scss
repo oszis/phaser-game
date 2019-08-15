@@ -1,0 +1,86 @@
+.smooth-show {
+    animation: smooth-show-anim .5s linear forwards;
+}
+
+@keyframes smooth-show-anim {
+    from { opacity: 0; visibility: hidden; }
+    to {opacity: 1; visibility: visible; }
+}
+
+.smooth-hide {
+    animation-name: smooth-hide-anim;
+    animation-duration: .5s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes smooth-hide-anim {
+    from { opacity: 1; visibility: visible; }
+    to {opacity: 0; visibility: hidden; }
+}
+
+@keyframes scale-hide-anim {
+    from { opacity: 0.9; width: 90%; height: 90%; }
+    to {opacity: 0; width: 400%; height: 400%; }
+}
+
+.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.invisible {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.no-transition {
+    transition: all 0s !important;
+}
+
+@mixin project-slider-footer {
+    position: absolute;
+    transform: translateY(50%);
+    bottom: 16%;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+.no-offset {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+.no-padding-bottom {
+    margin-bottom: 0;
+}
+.no-pointer-event {
+    pointer-events: none;
+}
+
+@mixin aspect-ratio($width: 1920px, $height: 1080px) {
+    @media (max-width: #{$width}) and (max-height: #{$height}) {
+        @content;
+    }
+}
+
+@mixin max-aspect-ratio($maxRatio: 1920, $minRatio: 1080) {
+    @media (max-aspect-ratio: #{$maxRatio} / #{$minRatio}) {
+        @content;
+    }
+}
+
+@mixin min-aspect-ratio($maxRatio: 1920, $minRatio: 1080) {
+    @media (min-aspect-ratio: #{$maxRatio} / #{$minRatio}) {
+        @content;
+    }
+}
+
+
+@function vw($value, $base: 1920) {
+    @return $value / $base * 100vw;
+}
+
+@function vh($value, $base: 900) {
+    @return $value / $base * 100vh;
+}

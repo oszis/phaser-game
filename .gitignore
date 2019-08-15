@@ -1,14 +1,39 @@
-# System and IDE files
-Thumbs.db
-.DS_Store
-.idea
-*.suo
-*.sublime-project
-*.sublime-workspace
+composer.lock
+/vendor/
+/.idea
+/node_modules
+/build
+/css
+/js
+/html*
+/media
 
-# Vendors
-node_modules/
+composer.lock
+/_images/
+/.idea
+/node_modules
+/build
+/config
+/images
+/img_BIC
+/upgrades
+/retailcrm
+/var
 
-# Build
-dist/
-/npm-debug.log
+/app/*/*/*
+/app/controllers/
+/app/functions/
+/app/lib/
+/app/payments/
+/app/schemas
+/app/Tygh
+!/app/addons/same_products/*
+
+*.log
+php.ini
+
+package-lock.json
+
+install.html
+
+changelog.txt

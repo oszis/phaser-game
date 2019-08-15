@@ -1,4 +1,4 @@
-import Phaser from "phaser";
+import Phaser from 'phaser';
 // import StageList from "../stage-list/stage-list";
 import LoadScene from '../../scenes/load-scene/load-scene';
 
@@ -6,19 +6,20 @@ export default class Game {
     constructor() {
         this.config = {
             type: Phaser.AUTO,
-            parent: "phaser-example",
-            width: 800,
-            height: 600,
+            parent: 'phaser-example',
+            width: window.innerWidth,
+            height: window.innerHeight,
             scene: [LoadScene],
             render: {
-                pixelArt: true
+                pixelArt: true,
             },
             physics: {
                 default: 'arcade',
                 arcade: {
-                    debug: true
-                }
-            }
+                    gravity: { y: 0 },
+                    debug: true,
+                },
+            },
         };
 
         this.game = null;
